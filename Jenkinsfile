@@ -3,9 +3,9 @@ pipeline {
 
   stages {
     stage('Checkout') {
-      steps {
-        git 'https://github.com/sadeepabandara/jenkins-authify-api.git'
-      }
+        steps {
+            git branch: 'main', url: 'https://github.com/sadeepabandara/jenkins-authify-api.git'
+        }
     }
 
     stage('Install Dependencies') {
