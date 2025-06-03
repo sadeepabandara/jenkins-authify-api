@@ -1,3 +1,6 @@
 #!/bin/bash
+set -e
 cd /home/ubuntu/app
-npm install
+echo "Installing dependencies..."
+npm install --unsafe-perm
+echo "Install complete."
