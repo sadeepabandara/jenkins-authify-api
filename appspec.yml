@@ -5,6 +5,10 @@ files:
       destination: /home/ubuntu/app
 
 hooks:
+    BeforeInstall:
+        - location: scripts/prepare.sh
+          timeout: 60
+          runas: ubuntu
     AfterInstall:
         - location: scripts/install.sh
           timeout: 180

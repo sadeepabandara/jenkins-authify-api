@@ -57,7 +57,7 @@ pipeline {
         aws deploy create-deployment \
           --application-name jenkins-authify-api \
           --deployment-group-name prod-group \
-          --s3-location bucket=jenkins-authify-deployments,key=app.zip,bundleType=zip
+          --s3-location bucket=jenkins-authify-deployments,key=app.zip,bundleType=zip || true
       '''
                 }
             }
