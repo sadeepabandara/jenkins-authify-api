@@ -47,10 +47,19 @@ pipeline {
             }
         }
 
-        stage('Release (Tag in Git)') {
+        stage('Release (Deploy with CodeDeploy)') {
             steps {
-                sh 'git tag v1.0.0 || true'
-                sh 'git push origin v1.0.0 || true'
+                withAWS(region: 'us-east-1', credentials: 'aws-jenkins-creds') {
+                    sh '''
+        zip -r app.zip *
+        aws s3 cp app.zip s3://jenkins-authify-deployments/app.zip
+
+        aws deploy create-deployment \
+          --application-name jenkins-authify-api \
+          --deployment-group-name prod-group \
+          --s3-location bucket=jenkins-authify-deployments,key=app.zip,bundleType=zip
+      '''
+                }
             }
         }
 
