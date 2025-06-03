@@ -51,7 +51,7 @@ pipeline {
             steps {
                 withAWS(region: 'us-east-1', credentials: 'aws-jenkins-creds') {
                     sh '''
-        zip -r app.zip *
+        zip -r app.zip * -x "node_modules/*"
         aws s3 cp app.zip s3://jenkins-authify-deployments/app.zip
 
         aws deploy create-deployment \
