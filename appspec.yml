@@ -5,6 +5,7 @@ files:
       destination: /home/ubuntu/app
 
 hooks:
+    # Before
     BeforeInstall:
         - location: scripts/prepare.sh
           timeout: 60
