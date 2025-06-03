@@ -51,7 +51,6 @@ pipeline {
             steps {
                 withAWS(region: 'us-east-1', credentials: 'aws-jenkins-creds') {
                     sh '''
-  cd jenkins-authify-api  # Your actual project folder name
   zip -r ../app.zip * -x "node_modules/*"
   cd ..
   aws s3 cp app.zip s3://jenkins-authify-deployments/app.zip
